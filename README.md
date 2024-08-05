@@ -2,6 +2,7 @@ Next.js Caching
 
 - Request Memoization
   .Next.js stores data requests with same configuration
+  .For example, for the requests to the same resource with different request headers, next.js treats it as different requests.
   .This avoides unnecessary duplicate data fetches
   .Cache only persists during request duration
 
