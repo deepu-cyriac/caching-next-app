@@ -8,6 +8,7 @@ Next.js Caching
 
 - Data Cache
   .Next.js stores & reuses fetched data until it's revalidated
+  .Data is stored in internally managed server side cache. Use revalidatePath() after changing some data to tell Next.js to use fresh data.
   .This avoids unnecessary requests to the data source & speeds up the application
   .The cache persists until it's revalidated(manually or after a set time)
 
