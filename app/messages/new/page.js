@@ -9,7 +9,7 @@ export default function NewMessagePage() {
 
     const message = formData.get("message");
     addMessage(message);
-    revalidatePath("/", "layout"); //does the same function. but more efficient as caching is done. but data is also revalidated when new data is added.
+    //revalidatePath("/messages"); //does the same function. but more efficient as caching is done. but data is also revalidated when new data is added.
     revalidateTag("msg"); //you can assign tags to requests that fetch data that will be cached. tags can be assigned to requests in multiple pages and this called to revalidate requests in all those
     redirect("/messages");
   }

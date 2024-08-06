@@ -8,7 +8,7 @@ import { getMessages } from "@/lib/messages";
 // export const dynamic = "force-dynamic"; //reserved variable name. default value is auto: does force caching. 'force-dynamic' same as no-store in request. Tells next.js not to use caching anywhere in this page.
 //above code also disables the route cache for this page. ensures always fresh data is there in production build also
 
-export default function MessagesPage() {
+export default async function MessagesPage() {
   //unstable_noStore(); //disables cache for only this component. useful over dynamic if you have multiple components
   // const response = await fetch(
   //   "http://localhost:8080/messages",
@@ -27,7 +27,7 @@ export default function MessagesPage() {
 
   // const messages = await response.json();
 
-  const messages = getMessages();
+  const messages = await getMessages();
 
   if (!messages || messages.length === 0) {
     return <p>No messages found</p>;
