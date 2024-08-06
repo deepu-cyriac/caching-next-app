@@ -1,14 +1,17 @@
-import { redirect } from 'next/navigation';
+import { redirect } from "next/navigation";
 
-import { addMessage } from '@/lib/messages';
+import { addMessage } from "@/lib/messages";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 export default function NewMessagePage() {
   async function createMessage(formData) {
-    'use server';
+    "use server";
 
-    const message = formData.get('message');
+    const message = formData.get("message");
     addMessage(message);
-    redirect('/messages');
+    revalidatePath("/", "layout"); //does the same function. but more efficient as caching is done. but data is also revalidated when new data is added.
+    revalidateTag("msg"); //you can assign tags to requests that fetch data that will be cached. tags can be assigned to requests in multiple pages and this called to revalidate requests in all those
+    redirect("/messages");
   }
 
   return (
